@@ -172,30 +172,29 @@ Texy.prototype = jQuery.extend({}, Selection.prototype, {
 
 	// vytvoří nadpis, podtrhne podle type
 	heading: function(type) {
-		this.selectBlock();
-		var lf = this.lf();
+		this.trimSelect();
 
-		// podtržení
-		function underline(len, type) {
-			var txt = '';
-			for (var i = 0; i < Math.max(3, len); i++) {
-				txt += type;
-			}
+		var text = this.text();
 
-			return txt;
+		switch(type){
+			case "h1":
+			var tag = "====";
+			break;
+			
+			case "h2":
+			var tag = "===";
+			break;
+			
+			case "h3":
+			var tag = "==";
+			break;
+			
+			case "h4":
+			var tag = "=";
+			break;
 		}
 
-		// Nový nadpis
-		if (this.isCursor()) {
-			var headingText = prompt(this.texyla.lng.texyHeadingText, '');
-			if (headingText) {
-				this.tag(headingText + lf + underline(headingText.length, type) + lf, '');
-			}
-
-		// Vyrobí nadpis z výběru
-		} else {
-			this.tag('', lf + underline(this.length(), type));
-		}
+		this.replace(tag+text.replace(/^\=+/gm, ""));
 	},
 
 	// obrázek

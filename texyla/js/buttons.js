@@ -1,9 +1,9 @@
 // Funkce tlačítek
 Texyla.prototype.buttons = {
-	h1: function() {this.texy.heading('#');},
-	h2: function() {this.texy.heading('*');},
-	h3: function() {this.texy.heading('=');},
-	h4: function() {this.texy.heading('-');},
+	h1: function() {this.texy.heading('h1');},
+	h2: function() {this.texy.heading('h2');},
+	h3: function() {this.texy.heading('h3');},
+	h4: function() {this.texy.heading('h4');},
 	bold: function() {this.texy.bold();},
 	italic: function() {this.texy.italic();},
 	del: function() {this.texy.phrase('--');},
